@@ -18,6 +18,11 @@ typedef enum : NSUInteger {
 
 @interface YHFontTool : NSObject
 
++(UIFont *)yh_fontWithPingFangSCRegularWithSize:(float)size;
+
++(UIFont *)yh_fontWithPingFangSCMediumWithSize:(float)size;
+
+
 +(UIFont *)yh_fontWithPingFangSCWithWeight:(PingFangSCFont)weight size:(float)size;
 
 @end
