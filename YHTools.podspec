@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "YHTools"
-  spec.version      = "0.0.3"
+  spec.version      = "v0.0.3"
   spec.summary      = "An iOS tool "
 
   # This description is used to generate tags and improve search results.
