@@ -8,7 +8,7 @@
 /**
  *字符串的工具
  */
-#import "YHStringTool.h"
+#import "YHJudgeTool.h"
 /**
  *字体的工具
 */

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UILabel (YHTools)
 //修改label行间距
--(void)yh_setLabelLineSpacingWithText:(NSString*)text lineSpacing:(CGFloat)lineSpacing;
+-(void)yh_setLabelLineSpacing:(CGFloat)lineSpacing;
 @end
 
 NS_ASSUME_NONNULL_END

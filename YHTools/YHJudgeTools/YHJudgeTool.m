@@ -1,8 +1,8 @@
 
 
-#import "YHStringTool.h"
+#import "YHJudgeTool.h"
 
-@implementation YHStringTool
+@implementation YHJudgeTool
 /**
  *判断是否为空字符串
 */
@@ -90,10 +90,19 @@
 /**
  *判断身份证号
 */
-- (BOOL)yh_isAvailableWithIdentityCardNum:(NSString *)identityCard
++ (BOOL)yh_isAvailableWithIdentityCardNum:(NSString *)identityCard
 {
         NSString *regex2 = @"^(\\d{14}|\\d{17})(\\d|[xX])$";
         NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];
         return [identityCardPredicate evaluateWithObject:identityCard];
+}
+
+/**
+ *自定义正则判断
+*/
+
++ (BOOL)yh_isAvailableCustomeRegulerString:(NSString *)regulerString customeString:(NSString *)customeString {
+    NSPredicate *customePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regulerString];
+    return [customePredicate evaluateWithObject:customeString];
 }
 @end

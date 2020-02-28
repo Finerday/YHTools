@@ -4,11 +4,11 @@
 
 @implementation YHFontTool
 
-+(UIFont *)yh_fontWithPingFangSCRegularWithSize:(float)size {
++(UIFont *)yh_DefaultSize:(float)size {
     return [UIFont fontWithName:@"PingFangSC-Regular" size:size];
 }
 
-+(UIFont *)yh_fontWithPingFangSCMediumWithSize:(float)size {
++(UIFont *)yh_MediumSize:(float)size {
     return [UIFont fontWithName:@"PingFangSC-Medium" size:size];
 }
 
@@ -29,4 +29,9 @@
         return [UIFont fontWithName:@"PingFangSC-Regular" size:size];
     }
 }
+
++(UIFont *)yh_CustomeFont:(NSString *)fontname size:(float)size {
+    return [UIFont fontWithName:fontname size:size];
+}
+
 @end

@@ -10,9 +10,8 @@
 
 @implementation UILabel (YHTools)
 //修改label行间距
--(void)yh_setLabelLineSpacingWithText:(NSString*)text lineSpacing:(CGFloat)lineSpacing {
-    if (!text || lineSpacing < 0.01) {
-        self.text = text;
+-(void)yh_setLabelLineSpacing:(CGFloat)lineSpacing {
+    if (self.text || lineSpacing < 0.01) {
         return;
     }
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -20,8 +19,8 @@
     [paragraphStyle setLineBreakMode:self.lineBreakMode];
     [paragraphStyle setAlignment:self.textAlignment];
     
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
-    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text length])];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.text length])];
     self.attributedText = attributedString;
 }
 @end

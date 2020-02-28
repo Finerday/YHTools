@@ -4,7 +4,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YHStringTool : NSObject
+@interface YHJudgeTool : NSObject
 /**
  *判断是否为空字符串
 */
@@ -37,7 +37,15 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *判断身份证号
 */
-- (BOOL)yh_isAvailableWithIdentityCardNum:(NSString *)identityCard;
++ (BOOL)yh_isAvailableWithIdentityCardNum:(NSString *)identityCard;
+
+
+/**
+ *自定义正则判断
+*/
++ (BOOL)yh_isAvailableCustomeRegulerString:(NSString *)regulerString customeString:(NSString *)customeString;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
