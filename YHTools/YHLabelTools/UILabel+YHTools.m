@@ -11,7 +11,7 @@
 @implementation UILabel (YHTools)
 //修改label行间距
 -(void)yh_setLabelLineSpacing:(CGFloat)lineSpacing {
-    if (self.text || lineSpacing < 0.01) {
+    if (lineSpacing < 0.01) {
         return;
     }
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];

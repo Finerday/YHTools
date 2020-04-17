@@ -23,4 +23,8 @@
 */
 #import "UILabel+YHTools.h"
 
+/**
+ *获取设备信息
+ */
+#import "YHAPPTool.h"
 #endif /* YHTools_h */
