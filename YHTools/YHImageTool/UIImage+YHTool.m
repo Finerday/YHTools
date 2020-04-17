@@ -1,17 +1,16 @@
 //
-//  UIImage+Categorys.m
+//  UIImage+YHTool.m
 //  MyTest
 //
-//  Created by ImFine on 2020/3/26.
+//  Created by ImFine on 2020/4/17.
 //  Copyright © 2020 Fine. All rights reserved.
 //
 
-#import "UIImage+Categorys.h"
+#import "UIImage+YHTool.h"
 static CGFloat pro = 5.0;
 
-@implementation UIImage (Categorys)
-
-- (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colors percentage:(NSArray *)percents gradientType:(GradientType)gradientType {
+@implementation UIImage (YHTool)
++ (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colors percentage:(NSArray *)percents gradientType:(GradientType)gradientType {
     
     NSAssert(percents.count <= 5, @"输入颜色数量过多，如果需求数量过大，请修改locations[]数组的个数");
     
@@ -66,7 +65,7 @@ static CGFloat pro = 5.0;
 
 
 #pragma mark- 对图片进行压缩
-- (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize targetKB: (NSInteger)KB
++ (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize targetKB: (NSInteger)KB
 {
     // Create a graphics image context
     UIGraphicsBeginImageContext(newSize);
@@ -174,6 +173,5 @@ static CGFloat pro = 5.0;
     
     return outputImage;
 }
-
 
 @end

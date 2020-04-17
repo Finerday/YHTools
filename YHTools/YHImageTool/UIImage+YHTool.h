@@ -1,13 +1,10 @@
 //
-//  UIImage+Categorys.h
+//  UIImage+YHTool.h
 //  MyTest
 //
-//  Created by ImFine on 2020/3/26.
+//  Created by ImFine on 2020/4/17.
 //  Copyright © 2020 Fine. All rights reserved.
 //
-
-
-
 
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger, GradientType) {
@@ -18,7 +15,7 @@ typedef NS_ENUM(NSInteger, GradientType) {
 };
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIImage (Categorys)
+@interface UIImage (YHTool)
 /**
  *  根据给定的颜色，生成渐变色的图片
  *  @param imageSize        要生成的图片的大小
@@ -26,14 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param percents          渐变颜色的占比数组
  *  @param gradientType     渐变色的类型
  */
-- (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colorArr percentage:(NSArray *)percents gradientType:(GradientType)gradientType;
++ (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colorArr percentage:(NSArray *)percents gradientType:(GradientType)gradientType;
 
 
 /// 压缩图片
 /// @param image 原图片
 /// @param newSize 压缩到的图片尺寸
 /// @param KB 压缩的图片大小kb
-- (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize targetKB: (NSInteger)KB;
++ (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize targetKB: (NSInteger)KB;
 
 
 /**

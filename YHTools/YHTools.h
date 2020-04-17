@@ -27,4 +27,11 @@
  *获取设备信息
  */
 #import "YHAPPTool.h"
+
+/**
+ *图片扩展类
+ */
+#import "UIImage+YHTool.h"
+
+
 #endif /* YHTools_h */
