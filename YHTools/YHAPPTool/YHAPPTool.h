@@ -12,7 +12,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YHAPPTool : NSObject
+/*
 
+ 使用时,先初始化
+ 
+ YHAPPTool *appTool = [[YHAPPTool alloc]init];
+ 
+ appTool.app_build
+ 
+
+*/
 @property (nonatomic, copy)NSString *app_displayName;// app名称
 @property (nonatomic, copy)NSString *app_version; // app版本
 @property (nonatomic, copy)NSString *app_build;// app build版本

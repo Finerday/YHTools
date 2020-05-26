@@ -12,7 +12,7 @@
     return [UIFont fontWithName:@"PingFangSC-Medium" size:size];
 }
 
-+(UIFont *)yh_fontWithPingFangSCWithWeight:(PingFangSCFont)weight size:(float)size {
++(UIFont *)yh_fontWithPingFangSCWithWeight:(YHPingFangSCFont)weight size:(float)size {
     if (weight == PingFangSCFontRegular) {
         return [UIFont fontWithName:@"PingFangSC-Regular" size:size];
     } else if (weight==PingFangSCFontMedium) {

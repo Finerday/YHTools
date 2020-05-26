@@ -7,10 +7,9 @@
 //
 
 #import "UIImage+YHTool.h"
-static CGFloat pro = 5.0;
 
 @implementation UIImage (YHTool)
-+ (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colors percentage:(NSArray *)percents gradientType:(GradientType)gradientType {
++ (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colors percentage:(NSArray *)percents gradientType:(YHImageGradientType)gradientType {
     
     NSAssert(percents.count <= 5, @"输入颜色数量过多，如果需求数量过大，请修改locations[]数组的个数");
     
@@ -110,8 +109,8 @@ static CGFloat pro = 5.0;
     return newImage;
 }
 
-
-+(UIImage *)codeWidthDataString:(NSString *)TargetString size:(CGFloat)size logo:(NSString *)logoName{
+//生成二维码
++(UIImage *)codeWidthDataString:(NSString *)TargetString size:(CGFloat)size{
     //1、创建过滤器
     CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
     //2、过滤器恢复默认
@@ -123,13 +122,18 @@ static CGFloat pro = 5.0;
     //5、获取输出的二维码
     CIImage *outputImage = [filter outputImage];
     
-    UIImage *targeImage = [self createNonInterpolatedUIimaegFormCIImage:outputImage withSize:size logo:(logoName != nil ? logoName : nil)];
+    UIImage *targeImage = [self createNonInterpolatedUIimaegFormCIImage:outputImage withSize:size];
     
     return targeImage;
 }
 
-
-+ (UIImage *)createNonInterpolatedUIimaegFormCIImage:(CIImage *)image withSize:(CGFloat)size logo:(NSString *)logoName{
+/**
+* 根据CIImage生成指定大小的UIImage
+*
+* @param image CIImage
+* @param size 图片宽度
+*/
++ (UIImage *)createNonInterpolatedUIimaegFormCIImage:(CIImage *)image withSize:(CGFloat)size{
     
     CGRect extent = CGRectIntegral(image.extent);
     CGFloat scale = MIN(size / CGRectGetWidth(extent), size / CGRectGetHeight(extent));
@@ -152,26 +156,16 @@ static CGFloat pro = 5.0;
     CGImageRelease(bitmapImage);
     
     UIImage *outputImage = [UIImage imageWithCGImage:scaledImage];
-    //生成logo
-    BOOL logo = logoName != nil ? YES : NO;
-    if (logo) {
-        UIGraphicsBeginImageContextWithOptions(outputImage.size, NO, [[UIScreen mainScreen] scale]);
-        [outputImage drawInRect:CGRectMake(0, 0, size, size)];
-//        UIImage *waterImage = [UIImage imageNamed:logoName];
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
-//        [imageView sd_setImageWithURL:[NSURL URLWithString:logoName]];
-//        UIImage *waterImage = [UIImage imageNamed:logoName];
-          UIImage *waterImage = imageView.image;
-
-        //注意：logo不能太大（最大不能超过二维码图片的30%），否则扫描不出来
-        [waterImage drawInRect:CGRectMake((size - size / pro) / 2., (size - size / pro) / 2., size / pro, size / pro)];
-        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        outputImage = newImage;
-    }
-    
     return outputImage;
+}
+//根据某个视图,生成图片
++ (UIImage *)creatImageWith:(UIView *)view toSize:(CGSize)size {
+    // 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数就是屏幕密度了，关键就是第三个参数 [UIScreen mainScreen].scale。
+    UIGraphicsBeginImageContextWithOptions(size, YES, [UIScreen mainScreen].scale);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end

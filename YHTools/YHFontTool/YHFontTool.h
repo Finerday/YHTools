@@ -14,7 +14,7 @@ typedef enum : NSUInteger {
     PingFangSCFontLight,
     PingFangSCFontUltralight,
     PingFangSCFontThin,
-} PingFangSCFont;
+} YHPingFangSCFont;
 
 @interface YHFontTool : NSObject
 
@@ -22,7 +22,7 @@ typedef enum : NSUInteger {
 
 +(UIFont *)yh_MediumSize:(float)size;
 
-+(UIFont *)yh_fontWithPingFangSCWithWeight:(PingFangSCFont)weight size:(float)size;
++(UIFont *)yh_fontWithPingFangSCWithWeight:(YHPingFangSCFont)weight size:(float)size;
 
 +(UIFont *)yh_CustomeFont:(NSString *)fontname size:(float)size;
 

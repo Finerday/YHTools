@@ -21,7 +21,7 @@
 /**
  *label的扩展的工具
 */
-#import "UILabel+YHTools.h"
+#import "UILabel+YHTool.h"
 
 /**
  *获取设备信息
@@ -32,6 +32,17 @@
  *图片扩展类
  */
 #import "UIImage+YHTool.h"
+
+
+/**
+ *button扩展类
+ */
+#import "UIButton+YHTool.h"
+
+/**
+ *view扩展类
+ */
+#import "UIView+YHTool.h"
 
 
 #endif /* YHTools_h */
