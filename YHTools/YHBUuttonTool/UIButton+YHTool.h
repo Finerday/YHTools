@@ -26,6 +26,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)yh_layoutButtonWithEdgeInsetsStyle:(YHButtonEdgeInsetsStyle)style
                         imageTitleSpace:(CGFloat)space;
+
+//扩大button点击的相应区域
+- (void)yh_setEnlargeEdgeWithTop:(CGFloat) top right:(CGFloat) right bottom:(CGFloat) bottom left:(CGFloat) left;
+//扩大button点击的相应区域
+- (void)yh_setEnlargeEdge:(CGFloat) size;
+
 @end
 
 NS_ASSUME_NONNULL_END

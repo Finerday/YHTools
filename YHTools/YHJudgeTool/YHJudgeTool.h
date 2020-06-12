@@ -10,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 */
 +(BOOL)yh_isEmptyStringWithString:(NSString *)string;
 /**
- *判断手机格式（包括香港手机号的判断
+ *判断手机格式
  */
 
 +(BOOL)yh_isAvailableWithMobile:(NSString *)mobile;
@@ -33,7 +33,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(BOOL)yh_isAvailableWithNickname:(NSString *)nickname;
 
-
+/**
+ *  验证输入金额
+ *
+ *  @param money 金额
+ *
+ *  @return 是否合法
+ */
++(BOOL)yh_isValidateInputMoney:(NSString *)money;
 /**
  *判断身份证号
 */
@@ -47,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 判断银行卡号是否正确
 /// @param bankNumber 银行卡号
 +(BOOL)yh_isAvailableWithBankNumber:(NSString *)bankNumber;
+
 /**
  *自定义正则判断
 */

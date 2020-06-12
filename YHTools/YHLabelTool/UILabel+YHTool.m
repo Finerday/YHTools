@@ -10,7 +10,7 @@
 
 @implementation UILabel (YHTool)
 
-/// 設置文字間距
+/// 设置文字间距
 -(void)yh_setLabelTextSpacing:(CGFloat)spacing {
     // 設置文字間距原理是在每一個字符串後面添加一個空白的間距,這樣會使得居中出現問題
        // text = [NSString stringWithFormat:@" %@",text]; 錯誤方式,就算空白字符串,也會佔用寬度,居中有偏差

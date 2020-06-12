@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger, YHImageGradientType) {
-    GradientFromTopToBottom = 1,            //从上到下
-    GradientFromLeftToRight,                //从左到右
-    GradientFromLeftTopToRightBottom,       //从上到下
-    GradientFromLeftBottomToRightTop        //从上到下
+    YHGradientFromTopToBottom = 1,            //从上到下
+    YHGradientFromLeftToRight,                //从左到右
+    YHGradientFromLeftTopToRightBottom,       //从上到下
+    YHGradientFromLeftBottomToRightTop        //从上到下
 };
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,14 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param percents          渐变颜色的占比数组
  *  @param gradientType     渐变色的类型
  */
-+ (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colorArr percentage:(NSArray *)percents gradientType:(YHImageGradientType)gradientType;
++ (UIImage *)yh_createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colorArr percentage:(NSArray *)percents gradientType:(YHImageGradientType)gradientType;
 
 
 /// 压缩图片
 /// @param image 原图片
 /// @param newSize 压缩到的图片尺寸
 /// @param KB 压缩的图片大小kb
-+ (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize targetKB: (NSInteger)KB;
++ (UIImage*)yh_imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize targetKB: (NSInteger)KB;
 
 
 /**
@@ -39,10 +39,10 @@ NS_ASSUME_NONNULL_BEGIN
     参数2：指定生成的大小size - 建议size的大小传imageView的大小
     参数3：添加的logo（可以为nil） - 其中logo的大小为size的5.0（默认， 也可以去修改pro）
  */
-+ (UIImage *)codeWidthDataString:(NSString *)TargetString size:(CGFloat)size;
++ (UIImage *)yh_codeWidthDataString:(NSString *)TargetString size:(CGFloat)size;
 
 //根据某个视图,生成图片
-+ (UIImage *)creatImageWith:(UIView *)view toSize:(CGSize)size;
++ (UIImage *)yh_creatImageWith:(UIView *)view toSize:(CGSize)size;
 @end
 
 NS_ASSUME_NONNULL_END

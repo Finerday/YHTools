@@ -6,20 +6,24 @@
 #ifndef YHTools_h
 #define YHTools_h
 /**
- *字符串的工具
+ *判断工具
  */
 #import "YHJudgeTool.h"
 /**
- *字体的工具
+ *字符串工具
+ */
+#import "YHStringTool.h"
+/**
+ *字体工具
 */
 #import "YHFontTool.h"
 /**
- *颜色的工具
+ *颜色工具
 */
 #import "YHColorTool.h"
 
 /**
- *label的扩展的工具
+ *label扩展工具
 */
 #import "UILabel+YHTool.h"
 
@@ -43,6 +47,12 @@
  *view扩展类
  */
 #import "UIView+YHTool.h"
+
+/**
+ *nsdate扩展类
+ */
+#import "NSDate+YHTool.h"
+
 
 
 #endif /* YHTools_h */

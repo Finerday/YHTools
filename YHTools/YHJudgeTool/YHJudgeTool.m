@@ -45,12 +45,12 @@
     return NO;
 }
 /**
- *判断手机格式（包括香港手机号的判断）
+ *判断手机格式
  */
 
 +(BOOL)yh_isAvailableWithMobile:(NSString *)mobile
 {
-    NSString * phone = @"^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(19[0-9])|(147))\\d{8}$|^(5|6|8|9)\\d{7}$";
+    NSString * phone = @"^1[3-9]\\d{9}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phone];
     return [phoneTest evaluateWithObject:mobile];
 }
@@ -86,6 +86,33 @@
     NSString *nicknameRegex = @"^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$";
     NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
     return [passWordPredicate evaluateWithObject:nickname];
+}
+/**
+ *  验证输入金额
+ *
+ *  @param money 金额
+ *
+ *  @return 是否合法
+ *
+ *使用方法
+ 
+ 在- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+ NSString *toString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+
+ return [YHJudgeTool yh_isValidateInputMoneyputMoney:toString];
+ }
+
+ *
+ */
++(BOOL)yh_isValidateInputMoney:(NSString *)money {
+    
+    //这是输入的金额带 + 或 -
+
+//    NSString *stringRegex = @"(\\+|\\-)?(([0]|(0[.]\\d{0,2}))|([1-9]\\d{0,8}(([.]\\d{0,2})?)))?";
+    
+    NSString *stringRegex = @"(([0]|(0[.]\\d{0,2})?)|([1-9]\\d{0,8}(([.]\\d{0,2})?)))";
+       NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stringRegex];
+    return   [phoneTest evaluateWithObject:money];
 }
 /**
  *判断身份证号

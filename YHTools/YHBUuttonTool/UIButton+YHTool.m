@@ -7,9 +7,21 @@
 //
 
 #import "UIButton+YHTool.h"
+#import <objc/runtime.h>
+
 
 @implementation UIButton (YHTool)
+static char yh_topNameKey;
+static char yh_rightNameKey;
+static char yh_bottomNameKey;
+static char yh_leftNameKey;
 
+/**
+*  设置button的titleLabel和imageView的布局样式，及间距
+*
+*  @param style titleLabel和imageView的布局样式
+*  @param space titleLabel和imageView的间距
+*/
 - (void)yh_layoutButtonWithEdgeInsetsStyle:(YHButtonEdgeInsetsStyle)style
                         imageTitleSpace:(CGFloat)space {
     /**
@@ -71,6 +83,55 @@
     // 4. 赋值
     self.titleEdgeInsets = labelEdgeInsets;
     self.imageEdgeInsets = imageEdgeInsets;
+}
+
+
+
+//扩大button点击的相应区域
+- (void)yh_setEnlargeEdge:(CGFloat) size
+{
+    objc_setAssociatedObject(self, &yh_topNameKey, [NSNumber numberWithFloat:size], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &yh_rightNameKey, [NSNumber numberWithFloat:size], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &yh_bottomNameKey, [NSNumber numberWithFloat:size], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &yh_leftNameKey, [NSNumber numberWithFloat:size], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
+}
+//扩大button点击的相应区域
+- (void)yh_setEnlargeEdgeWithTop:(CGFloat) top right:(CGFloat) right bottom:(CGFloat) bottom left:(CGFloat) left
+{
+    objc_setAssociatedObject(self, &yh_topNameKey, [NSNumber numberWithFloat:top], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &yh_rightNameKey, [NSNumber numberWithFloat:right], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &yh_bottomNameKey, [NSNumber numberWithFloat:bottom], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &yh_leftNameKey, [NSNumber numberWithFloat:left], OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (CGRect)yh_enlargedRect
+{
+    NSNumber* topEdge = objc_getAssociatedObject(self, &yh_topNameKey);
+    NSNumber* rightEdge = objc_getAssociatedObject(self, &yh_rightNameKey);
+    NSNumber* bottomEdge = objc_getAssociatedObject(self, &yh_bottomNameKey);
+    NSNumber* leftEdge = objc_getAssociatedObject(self, &yh_leftNameKey);
+    if (topEdge && rightEdge && bottomEdge && leftEdge)
+    {
+        return CGRectMake(self.bounds.origin.x - leftEdge.floatValue,
+                          self.bounds.origin.y - topEdge.floatValue,
+                          self.bounds.size.width + leftEdge.floatValue + rightEdge.floatValue,
+                          self.bounds.size.height + topEdge.floatValue + bottomEdge.floatValue);
+    }
+    else
+    {
+        return self.bounds;
+    }
+}
+
+- (UIView*) hitTest:(CGPoint) point withEvent:(UIEvent*) event
+{
+    CGRect rect = [self yh_enlargedRect];
+    if (CGRectEqualToRect(rect, self.bounds))
+    {
+        return [super hitTest:point withEvent:event];
+    }
+    return CGRectContainsPoint(rect, point) ? self : nil;
 }
 
 @end

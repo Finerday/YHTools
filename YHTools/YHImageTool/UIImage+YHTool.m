@@ -9,7 +9,7 @@
 #import "UIImage+YHTool.h"
 
 @implementation UIImage (YHTool)
-+ (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colors percentage:(NSArray *)percents gradientType:(YHImageGradientType)gradientType {
++ (UIImage *)yh_createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colors percentage:(NSArray *)percents gradientType:(YHImageGradientType)gradientType {
     
     NSAssert(percents.count <= 5, @"输入颜色数量过多，如果需求数量过大，请修改locations[]数组的个数");
     
@@ -33,19 +33,19 @@
     CGPoint start;
     CGPoint end;
     switch (gradientType) {
-        case GradientFromTopToBottom:
+        case YHGradientFromTopToBottom:
             start = CGPointMake(imageSize.width/2, 0.0);
             end = CGPointMake(imageSize.width/2, imageSize.height);
             break;
-        case GradientFromLeftToRight:
+        case YHGradientFromLeftToRight:
             start = CGPointMake(0.0, imageSize.height/2);
             end = CGPointMake(imageSize.width, imageSize.height/2);
             break;
-        case GradientFromLeftTopToRightBottom:
+        case YHGradientFromLeftTopToRightBottom:
             start = CGPointMake(0.0, 0.0);
             end = CGPointMake(imageSize.width, imageSize.height);
             break;
-        case GradientFromLeftBottomToRightTop:
+        case YHGradientFromLeftBottomToRightTop:
             start = CGPointMake(0.0, imageSize.height);
             end = CGPointMake(imageSize.width, 0.0);
             break;
@@ -64,7 +64,7 @@
 
 
 #pragma mark- 对图片进行压缩
-+ (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize targetKB: (NSInteger)KB
++ (UIImage*)yh_imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize targetKB: (NSInteger)KB
 {
     // Create a graphics image context
     UIGraphicsBeginImageContext(newSize);
@@ -110,7 +110,7 @@
 }
 
 //生成二维码
-+(UIImage *)codeWidthDataString:(NSString *)TargetString size:(CGFloat)size{
++(UIImage *)yh_codeWidthDataString:(NSString *)TargetString size:(CGFloat)size{
     //1、创建过滤器
     CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
     //2、过滤器恢复默认
@@ -122,7 +122,7 @@
     //5、获取输出的二维码
     CIImage *outputImage = [filter outputImage];
     
-    UIImage *targeImage = [self createNonInterpolatedUIimaegFormCIImage:outputImage withSize:size];
+    UIImage *targeImage = [self yh_createNonInterpolatedUIimaegFormCIImage:outputImage withSize:size];
     
     return targeImage;
 }
@@ -133,7 +133,7 @@
 * @param image CIImage
 * @param size 图片宽度
 */
-+ (UIImage *)createNonInterpolatedUIimaegFormCIImage:(CIImage *)image withSize:(CGFloat)size{
++ (UIImage *)yh_createNonInterpolatedUIimaegFormCIImage:(CIImage *)image withSize:(CGFloat)size{
     
     CGRect extent = CGRectIntegral(image.extent);
     CGFloat scale = MIN(size / CGRectGetWidth(extent), size / CGRectGetHeight(extent));
@@ -158,8 +158,9 @@
     UIImage *outputImage = [UIImage imageWithCGImage:scaledImage];
     return outputImage;
 }
+
 //根据某个视图,生成图片
-+ (UIImage *)creatImageWith:(UIView *)view toSize:(CGSize)size {
++ (UIImage *)yh_creatImageWith:(UIView *)view toSize:(CGSize)size {
     // 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数就是屏幕密度了，关键就是第三个参数 [UIScreen mainScreen].scale。
     UIGraphicsBeginImageContextWithOptions(size, YES, [UIScreen mainScreen].scale);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];

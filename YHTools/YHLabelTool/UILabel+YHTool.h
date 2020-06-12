@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UILabel (YHTool)
-/// 設置文字間距
+/// 设置文字间距
 -(void)yh_setLabelTextSpacing:(CGFloat)spacing;
 //修改label行间距
 -(void)yh_setLabelLineSpacing:(CGFloat)lineSpacing;
