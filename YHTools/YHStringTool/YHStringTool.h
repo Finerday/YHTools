@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString *)yh_MD5ForUpper32BateWith:(NSString *)sourceString;
 ///计算文字高度
 +(CGSize )yh_calculateText:(NSString *)text Width:(CGFloat)width font:(UIFont *)font;
-
+///对字符串进行encode编码
++ (NSString *)encodeString:(NSString *)unencodedString;
 @end
 
 NS_ASSUME_NONNULL_END

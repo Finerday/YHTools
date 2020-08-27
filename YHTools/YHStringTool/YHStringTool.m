@@ -45,4 +45,20 @@
     size.height = size.height + 1.5;
     return size;
 }
+
+///字符串encode
++ (NSString *)encodeString:(NSString *)unencodedString
+{
+       if([[[UIDevice currentDevice]systemVersion]floatValue] >=9.0)
+       {
+
+           return[unencodedString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+
+       }
+       
+       NSString*encodedString = (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)unencodedString,NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8));
+
+       return encodedString;
+
+}
 @end
