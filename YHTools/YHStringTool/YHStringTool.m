@@ -47,7 +47,7 @@
 }
 
 ///字符串encode
-+ (NSString *)encodeString:(NSString *)unencodedString
++ (NSString *)yh_encodeString:(NSString *)unencodedString
 {
        if([[[UIDevice currentDevice]systemVersion]floatValue] >=9.0)
        {
@@ -61,4 +61,6 @@
        return encodedString;
 
 }
+
+
 @end

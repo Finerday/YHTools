@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString*)userPhoneName;//手机别名： 用户定义的名称
 +(NSString*)userDeviceName;//设备名称
 +(NSString*)userPhoneVersion;//手机系统版本
-+(NSString*)userPhoneModel;//手机型号
++(NSString*)userPhoneModel;//手机型号iphone  ipad
 +(NSString*)userLocalPhoneModel;//地方型号  （国际化区域名称）
 +(NSString*)uuid;//手机序列号
 + (NSString *)userAgent;
@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)wifiName;//WiFi名字
 + (NSString *)wifiMac;//WiFi mac 名字
++ (NSString *)deviceName;//手机型号
 @end
 
 NS_ASSUME_NONNULL_END

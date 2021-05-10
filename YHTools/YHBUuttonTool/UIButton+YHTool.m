@@ -134,4 +134,25 @@ static char yh_leftNameKey;
     return CGRectContainsPoint(rect, point) ? self : nil;
 }
 
+
+//设置按钮图片
+- (void)yh_setNormalImage:(NSString *)normalImage selectImage:(NSString *)selectImage {
+    [self setImage:[UIImage imageNamed:normalImage] forState:UIControlStateNormal];
+    selectImage.length==0 ?  : [self setImage:[UIImage imageNamed:selectImage] forState:UIControlStateSelected];
+}
+
+//设置按钮title
+- (void)yh_setTitle:(NSString *)title titleColor:(UIColor *)titleColor font:(UIFont *)font {
+    [self setTitle:title forState:UIControlStateNormal];
+    [self setTitleColor:titleColor forState:UIControlStateNormal];
+    self.titleLabel.font = font;
+}
+//设置按钮选中时属性
+- (void)yh_setSelectTitle:(NSString *)title titleSelectColor:(UIColor *)titleColor fontSelect:(UIFont *)font {
+    [self setTitle:title forState:UIControlStateSelected];
+    [self setTitleColor:titleColor forState:UIControlStateSelected];
+    self.titleLabel.font = font;
+}
+
+
 @end

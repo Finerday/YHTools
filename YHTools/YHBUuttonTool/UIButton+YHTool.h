@@ -32,6 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
 //扩大button点击的相应区域
 - (void)yh_setEnlargeEdge:(CGFloat) size;
 
+//设置按钮图片
+- (void)yh_setNormalImage:(NSString *)normalImage selectImage:(NSString *)selectImage;
+//设置按钮title
+- (void)yh_setTitle:(NSString *)title titleColor:(UIColor *)titleColor font:(UIFont *)font;
+//设置按钮选中时属性
+- (void)yh_setSelectTitle:(NSString *)title titleSelectColor:(UIColor *)titleColor fontSelect:(UIFont *)font;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

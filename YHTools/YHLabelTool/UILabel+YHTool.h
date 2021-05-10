@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)yh_setLabelTextSpacing:(CGFloat)spacing;
 //修改label行间距
 -(void)yh_setLabelLineSpacing:(CGFloat)lineSpacing;
+//设置label默认属性
+- (void)yh_setDefaultPerportysWith:(NSString *)title textColor:(UIColor *)textColor fontSize:(CGFloat)fontSize;
+
 @end
 
 NS_ASSUME_NONNULL_END

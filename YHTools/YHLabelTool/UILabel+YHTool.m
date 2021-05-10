@@ -38,4 +38,10 @@
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.text length])];
     self.attributedText = attributedString;
 }
+//设置label默认属性
+- (void)yh_setDefaultPerportysWith:(NSString *)title textColor:(UIColor *)textColor fontSize:(CGFloat)fontSize {
+    self.text = title;
+    self.textColor = textColor;
+    self.font = [UIFont systemFontOfSize:fontSize];
+}
 @end

@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///计算文字高度
 +(CGSize )yh_calculateText:(NSString *)text Width:(CGFloat)width font:(UIFont *)font;
 ///对字符串进行encode编码
-+ (NSString *)encodeString:(NSString *)unencodedString;
++ (NSString *)yh_encodeString:(NSString *)unencodedString;
+
 @end
 
 NS_ASSUME_NONNULL_END
